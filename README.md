@@ -1,37 +1,102 @@
-## Welcome to GitHub Pages
+####  Unicode编码
+在字符串中使用转义字符输入Unicode编码，\u四位编码
+在网页中使用Unicode编码，&#编码，这里的编码使用十进制。<br>
+#### 相等运算符
+相等运算符用来比较两个值是否相等，相等返回true，不相等返回false。
+使用相等 == 来做相等运算<br>
+当使用==来比较值，如果两个值类型不同，会先进行类型转换，再进行比较，大部分情况都会转换成数字，例 <br>
+console.log('1' == 1);    //true   <br>
+console.log('1' == true);    //true   <br>
+undefined衍生自null，判断相等时，会返回true  <br>
+NaN不和任何值相等，包括它本身  <br>
+console.log(NaN == NaN);       //false<br>
+判断一个值是否为NaN  使用isNaN(),如果该值是NaN，返回true 否则返回false  <br>
+不相等  !=
+不相等的两个变量进行自动类型转换，转换后值相等也会返回false<br>
 
-You can use the [editor on GitHub](https://github.com/1127-oneday/wxq.github.io/edit/main/README.md) to maintain and preview the content for your website in Markdown files.
+#### === 全等
+全等不会做类型转换
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+#### !==不全等
+用来判断两个值是否不全等，不会进行类型转换
 
-### Markdown
+### 条件运算符（三元运算符）
+- 语法:   条件表达式 ？ 语句1：语句2；
+- 执行流程：条件运算符在执行时，首先对条件表达式进行求值，如果该值为true，执行语句1，并返回执行结果，如果该值为false，执行语句2，并返回执行结果。
+#### 运算符优先级
+- 使用 ，分割多个语句，一般可以在声明多个变量时使用
+- 使用，运算符同时声明多个变量并赋值
+- 运算符表:
+- 
+权重 | 符号
+---|---
+17 | .、[]、new
+16 | 	()
+15 | ++、--
+14 | !、~、+(单目)、-(单目)、typeof、void、delete
+13 | 	%、*、/
+12 | +(双目)、-(双目)
+11 | <<、>>、>>>
+10 | <、<=、>、>=
+9 | !=、、!、===
+8 | &
+7 | ^
+6 | \||
+5 |	&&
+4 | \|| 
+3 | ?:
+2 | =、+=、-=、*=、/=、%=、<<=、>>=、>>>=、&=、^=、|=
+1 | , 
+### 代码块
+- 语句是按照自上而下的顺序执行的，语句各自独立<br>
+- 可以用{}进行分组，称为一组语句，要不都执行要不都不执行，一个{}称作代码块
+- 代码块后面不用加；
+- js中的代码块只具有分组的作用，没有其他的用途
+- 代码块中的代码，外部可以使用
+### 流程控制语句
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+- 通过流程控制语句可以控制程序执行流程，使程序可以根据一定条件来选择执行
+- 语句的分类：
+-  - 条件判断语句
+-  - 条件循环语句
+-  - 循环语句
+- 条件判断语句：
+-    - if语句一：    if（条件表达式）{语句}
+-    if语句在执行时，会先对条件表达式进行求值判断，如果条件表达式的值为true，则执行if后语句，如果判断条件为false，则不执行if后面的语句
+-    if语句只能控制紧随其后的语句
+-    if语句二： if(条件表达式){语句1}else{语句2}  if语句在执行时，会先对条件表达式进行求值判断，如果条件表达式的值为true，则执行语句1，如果为false，执行语句2.
+-    if语句三：  if（条件表达式1）{语句1}else if（条件表达式2） {语句2}else {语句3}   //从上往下执行，如果条件表达式的值为true，执行语句1，如果为false，往下执行条件表达式2，如果值为true，执行语句2，false执行语句3.一旦代码块执行
+-    prompt() 可以弹出提示框，该提示框会有一个文本框，该字符串将会作为提示框的提示文字，接受的文字可以作为函数返回值返回，可以定义一个变量来接收文字
+-    prompt() 返回的是字符串类型，可以再prompt前面加+，隐式转换成数值型。
+  
 ```
+        var num1 = +prompt('请输入num1');
+        var num2 = +prompt('请输入num2');
+        var num3 = +prompt('请输入num3');
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/1127-oneday/wxq.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+        var max = num1 > num2 ? num1 > num3 ? num1 : num3 : num2 > num3 ? num2 : num3;
+        alert('最大值是：' + max);
+```
+### 条件分支语句
+- 语句：
+```
+  switch（条件表达式）{
+          case 表达式：
+          语句...
+          break;
+          case 表达式：
+          语句...
+          break;
+          case 表达式：
+          语句...
+          break;
+          case 表达式：
+          语句...
+          break;
+}
+```
+- 执行流程：  执行时会依次将case表达式的值和switch表达式的值进行<strong>全等</strong>比较,如果不条件不满足，会继续向下执行，如果比较结果为true，会执行当前case后语句的全部执行，所以要在每个case语句后加break；
+- 使用break可以用来退出switch语句。
+- default 相当于if..else语句中的else，处理其他条件表达式的值，如果上面的条件值都是false，执行default。
+- if语句和switch语句在功能上有重复，if使用比较广泛，可以互相转换
